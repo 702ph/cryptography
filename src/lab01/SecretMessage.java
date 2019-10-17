@@ -8,12 +8,12 @@ public class SecretMessage {
 
 
     public SecretMessage(String encryptedText, String key) {
-        this.encryptedText = convertBinaryExpressionOfStringToByteArray(encryptedText);
-        this.key = convertBinaryExpressionOfStringToByteArray(key);
+        this.encryptedText = convertBinaryExpressionStringToByteArray(encryptedText);
+        this.key = convertBinaryExpressionStringToByteArray(key);
     }
 
 
-    private byte[] convertBinaryExpressionOfStringToByteArray(String s) {
+    private byte[] convertBinaryExpressionStringToByteArray(String s) {
         return new BigInteger(s, 2).toByteArray();
     }
 }
