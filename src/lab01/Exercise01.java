@@ -107,14 +107,14 @@ public class Exercise01 {
     }
 
 
-
     static void divideString(String s){
-
         Matcher m = Pattern.compile("[\\s\\S]{1,8}").matcher(s);
         while (m.find()) {
             System.out.println(m.group());
         }
     }
+
+
 
 
 }
