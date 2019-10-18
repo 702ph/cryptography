@@ -1,13 +1,22 @@
 package lab02_morse;
 
+import java.util.ArrayList;
+
 public class Main {
 
-    static String plainText = "abc";
-    static String morseCode = ".-";
-
     public static void main(String[] args) {
-        Morse morse = new Morse();
+
+        //create instances
+        ArrayList<Morse> morses = new ArrayList<>();
+        morses.add(new Morse("Berlin"));
+        morses.add(new Morse("Osa ka"));
+        morses.add(new Morse("-..././.-./.-../../-."));
+        morses.add(new Morse("---/.../.-/-.-/.-"));
+
+        // print all
+        for (Morse morse: morses) {
+            System.out.println(morse.getPlainText() + ":\n" + morse.getCodes());
+        }
 
     }
-
 }

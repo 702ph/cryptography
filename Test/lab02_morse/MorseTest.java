@@ -1,11 +1,7 @@
 package lab02_morse;
 
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeAll;
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class MorseTest {
@@ -13,10 +9,6 @@ class MorseTest {
     //private static Morse instance;
     Morse morse = new Morse();
 
-    @BeforeAll
-    static void setup(){
-        //instance = new Morse();
-    }
 
     // get private method
     Method getPrivateMethod(String methodName, Class parameterClassType) throws NoSuchMethodException {
@@ -27,13 +19,16 @@ class MorseTest {
 
 
     @org.junit.jupiter.api.Test
-    void encode() {
+    void encode() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Method method = getPrivateMethod("encode", String.class);
+        assertEquals(".-/--../-----", method.invoke(morse,"AZ0"));
     }
 
 
     @org.junit.jupiter.api.Test
-    void decode() {
-        assertEquals("AZ10", morse.decode(".-/--../-----"));
+    void decode() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Method method = getPrivateMethod("decode", String.class);
+        assertEquals("AZ0", method.invoke(morse, ".-/--../-----"));
     }
 
 
@@ -42,7 +37,7 @@ class MorseTest {
         Method method = getPrivateMethod("getAlphabet", String.class);
         assertEquals("A", method.invoke(morse, ".-"));
         assertEquals("Z", method.invoke(morse, "--.."));
-        assertEquals("10", method.invoke(morse, "-----"));
+        assertEquals("0", method.invoke(morse, "-----"));
     }
 
 
@@ -51,6 +46,6 @@ class MorseTest {
         Method method = getPrivateMethod("getCode", String.class);
         assertEquals(".-", method.invoke(morse, "A"));
         assertEquals("--..", method.invoke(morse, "Z"));
-        assertEquals("-----", method.invoke(morse, "10"));
+        assertEquals("-----", method.invoke(morse, "0"));
     }
 }
