@@ -62,11 +62,6 @@ public class Morse {
     }
 
 
-    private int getNumberForAlphabet(char c){
-        return c - 65;
-    }
-
-
     // return alphabet or "?" if not found
     private String getAlphabet(String code){
         for (int i=0; i<codeTableSS.length; i++){
@@ -75,6 +70,7 @@ public class Morse {
         return "?";
     }
 
+
     // return code or "?" if not found
     private String getCode(String alphabet){
         for (int i=0; i<codeTableSS.length; i++){
@@ -82,6 +78,4 @@ public class Morse {
         }
         return "?";
     }
-
-
 }

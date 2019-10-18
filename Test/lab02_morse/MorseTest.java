@@ -38,14 +38,6 @@ class MorseTest {
 
 
     @org.junit.jupiter.api.Test
-    void testGetNumberForAlphabet() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        Method method = getPrivateMethod("getNumberForAlphabet", char.class);
-        assertEquals(0, (int)method.invoke(morse, 'A'));
-        assertEquals(25, (int)method.invoke(morse, 'Z'));
-    }
-
-
-    @org.junit.jupiter.api.Test
     void testGetAlphabet() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method method = getPrivateMethod("getAlphabet", String.class);
         assertEquals("A", method.invoke(morse, ".-"));
@@ -61,6 +53,4 @@ class MorseTest {
         assertEquals("--..", method.invoke(morse, "Z"));
         assertEquals("-----", method.invoke(morse, "10"));
     }
-
-
 }
