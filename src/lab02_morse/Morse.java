@@ -1,92 +1,86 @@
 package lab02_morse;
 
-
-import java.util.HashMap;
-
 public class Morse {
 
+    // would be better if sorted by frequency (in English)
+    String [][] codeTableSS = {
+            {"A",".-"},
+            {"B","-..."},
+            {"C","-.-."},
+            {"D","-.."},
+            {"E","."},
+            {"F","..-."},
+            {"G","--."},
+            {"H","...."},
+            {"I",".."},
+            {"J",".---"},
+            {"K","-.-"},
+            {"L",".-.."},
+            {"M","--"},
+            {"N","-."},
+            {"O","---"},
+            {"P",".--."},
+            {"Q","--.-"},
+            {"R",".-."},
+            {"S","..."},
+            {"T","-"},
+            {"U","..-"},
+            {"V","...-"},
+            {"W",".--"},
+            {"X","-..-"},
+            {"Y","-.--"},
+            {"Z","--.."},
+            {",","--..--"},
+            {".",".-.-.-"},
+            {"?","..--.."},
+            {"1",".----"},
+            {"2","..---"},
+            {"3","...--"},
+            {"4","....-"},
+            {"5","....."},
+            {"6","-...."},
+            {"7","--..."},
+            {"8","---.."},
+            {"9","----."},
+            {"10","-----"}
+    };
 
-    //interpret number as alphabet
-    //String[][] codeTable00 = {{"a",".-"},{"b","-..."}};
 
-    //String [] codeTable = {};
+    public String decode(String codeText){
+        String[] codes = codeText.replaceAll("\\s+","").toUpperCase().split("/");
+        StringBuilder decodedText = new StringBuilder();
 
-    HashMap<String,String> codeTable = new HashMap<>();
-
-    public Morse(){
-        codeTable.put("a",".-");
-        codeTable.put("b","-...");
-        codeTable.put("c","-.-.");
-        codeTable.put("d","-..");
-        codeTable.put("e",".");
-        codeTable.put("f","..-.");
-        codeTable.put("g","--.");
-        codeTable.put("h","....");
-        codeTable.put("i","..");
-        codeTable.put("j",".---");
-        codeTable.put("k","-.-");
-        codeTable.put("l",".-..");
-        codeTable.put("m","--");
-        codeTable.put("n","-.");
-        codeTable.put("o","---");
-        codeTable.put("p",".--.");
-        codeTable.put("q","--.-");
-        codeTable.put("r",".-.");
-        codeTable.put("s","...");
-        codeTable.put("t","-");
-        codeTable.put("u","..-");
-        codeTable.put("v","...-");
-        codeTable.put("w",".--");
-        codeTable.put("x","-..-");
-        codeTable.put("y","-.--");
-        codeTable.put("z","--..");
-        codeTable.put("A",".-");
-        codeTable.put("B","-...");
-        codeTable.put("C","-.-.");
-        codeTable.put("D","-..");
-        codeTable.put("E",".");
-        codeTable.put("F","..-.");
-        codeTable.put("G","--.");
-        codeTable.put("H","....");
-        codeTable.put("I","..");
-        codeTable.put("J",".---");
-        codeTable.put("K","-.-");
-        codeTable.put("L",".-..");
-        codeTable.put("M","--");
-        codeTable.put("N","-.");
-        codeTable.put("O","---");
-        codeTable.put("P",".--.");
-        codeTable.put("Q","--.-");
-        codeTable.put("R",".-.");
-        codeTable.put("S","...");
-        codeTable.put("T","-");
-        codeTable.put("U","..-");
-        codeTable.put("V","...-");
-        codeTable.put("W",".--");
-        codeTable.put("X","-..-");
-        codeTable.put("Y","-.--");
-        codeTable.put("Z","--..");
-        codeTable.put(" "," ");
-        codeTable.put(",","--..--");
-        codeTable.put(".",".-.-.-");
-        codeTable.put("?","..--..");
+        for(int i=0; i<codes.length; i++){
+            decodedText.append(getAlphabet(codes[i]));
+        }
+        return decodedText.toString();
     }
 
 
-
-
-    public String encode(String s){
-
-        return new String();
+    public String encode (String s){
+        return  new String();
     }
 
 
-    public String decode (String s){
-
+    private int getNumberForAlphabet(char c){
+        return c - 65;
     }
 
-    public int getNumberForAlphabet(String s){
 
+    // return alphabet or "?" if not found
+    private String getAlphabet(String code){
+        for (int i=0; i<codeTableSS.length; i++){
+            if (codeTableSS[i][1].equals(code)) return codeTableSS[i][0];
+        }
+        return "?";
+    }
+
+    // return code or "?" if not found
+    private String getCode(String alphabet){
+        for (int i=0; i<codeTableSS.length; i++){
+            if (codeTableSS[i][0].equals(alphabet)) return codeTableSS[i][1];
+        }
+        return "?";
     }
 
 
