@@ -1,6 +1,6 @@
 package lab02_morse;
 
-public class Morse {
+public class Morse implements MorseInterface {
 
     // would be better if sorted by frequency (in English)
     private String [][] codeTable = {
